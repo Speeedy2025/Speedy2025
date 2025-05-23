@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Speedy Token (SPD)</title>
@@ -99,6 +100,9 @@
         Speedy Token (SPD) starts with a fair and focused launch: <strong>10B SPD</strong> in liquidity.
         This allows a higher starting price and rapid momentum during the early stages.
     </p>
+<div style="background: #fff; padding: 2rem; border-radius: 10px; margin-top: 1rem;">
+  <canvas id="spdChart" style="max-width: 100%;"></canvas>
+</div>
 
     <p>
         Instead of releasing all tokens at once, we follow a smart phased approach:
@@ -204,5 +208,72 @@
     <footer>
         &copy; 2025 Speedy Token. All rights reserved.
     </footer>
+    <script>
+  const ctx = document.getElementById('spdChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [
+        'Phase 1','Phase 2','Phase 3','Phase 4','Phase 5','Phase 6',
+        'Phase 7','Phase 8','Phase 9','Phase 10','Phase 11','Phase 12'
+      ],
+      datasets: [
+        {
+          label: 'SPD in Pool (B)',
+          data: [10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65],
+          borderColor: '#d32f2f',
+          backgroundColor: 'rgba(211,47,47,0.1)',
+          yAxisID: 'y1'
+        },
+        {
+          label: 'Liquidity (USD)',
+          data: [2500, 4000, 7200, 13700, 26800, 33000, 39000, 46000, 52000, 58000, 63000, 72000],
+          borderColor: '#1976d2',
+          backgroundColor: 'rgba(25,118,210,0.1)',
+          yAxisID: 'y2'
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      interaction: {
+        mode: 'index',
+        intersect: false,
+      },
+      stacked: false,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: 'SPD Supply and Liquidity Growth Over Time'
+        }
+      },
+      scales: {
+        y1: {
+          type: 'linear',
+          position: 'left',
+          title: {
+            display: true,
+            text: 'SPD in Pool (B)'
+          }
+        },
+        y2: {
+          type: 'linear',
+          position: 'right',
+          title: {
+            display: true,
+            text: 'Liquidity (USD)'
+          },
+          grid: {
+            drawOnChartArea: false
+          }
+        }
+      }
+    }
+  });
+</script>
+
 </body>
 </html>

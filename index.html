@@ -15,8 +15,61 @@
 
   <!-- Twitter conversion tracking -->
   <script>
-    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
-    twq('config','q3v9c');
+    // Configure axes: SMT on left (y1), Liquidity on right (y2)
+    const ctx = document.getElementById('smtChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Phase 1','Phase 2','Phase 3','Phase 4','Phase 5','Phase 6','Phase 7','Phase 8','Phase 9','Phase 10','Phase 11','Phase 12'],
+        datasets: [
+          { 
+            label: 'SMT in Pool (B)',
+            data: [10,15,20,25,30,35,40,45,50,55,60,65],
+            borderColor: 'var(--color-red)',
+            backgroundColor: 'rgba(229,37,33,0.2)',
+            yAxisID: 'y1',
+            tension: 0.3
+          },
+          { 
+            label: 'Liquidity (USD)',
+            data: [2500,4000,7200,13700,26800,33000,39000,46000,52000,58000,63000,72000],
+            borderColor: '#1976d2',
+            backgroundColor: 'rgba(25,118,210,0.2)',
+            yAxisID: 'y2',
+            tension: 0.3
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        interaction: {mode: 'index', intersect: false},
+        plugins: {
+          legend: {position: 'top', labels: {color: '#333'}},
+          title: {display: true, text: 'SMT Supply & Liquidity Over Time', color: '#333', font: {family: '"Poppins", sans-serif', size: 16}}
+        },
+        scales: {
+          y1: {
+            type: 'linear',
+            position: 'left',
+            beginAtZero: true,
+            title: {display: true, text: 'SMT in Pool (B)', color: '#333'},
+            ticks: {color: '#333'}
+          },
+          y2: {
+            type: 'linear',
+            position: 'right',
+            beginAtZero: true,
+            title: {display: true, text: 'Liquidity (USD)', color: '#333'},
+            ticks: {color: '#333'},
+            grid: {drawOnChartArea: false, color: 'rgba(0,0,0,0.1)'}
+          },
+          x: {
+            ticks: {color: '#333'},
+            grid: {color: 'rgba(0,0,0,0.1)'}
+          }
+        }
+      }
+    });
   </script>
 
   <style>

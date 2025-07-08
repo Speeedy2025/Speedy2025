@@ -20,7 +20,6 @@
   </script>
 
   <style>
-    /* --- Variables & Global Styles --- */
     :root {
       --font-body: 'Poppins', sans-serif;
       --font-header: 'Press Start 2P', cursive;
@@ -38,7 +37,6 @@
       color: var(--text-color);
       line-height: 1.6;
     }
-
     header {
       font-family: var(--font-header);
       background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('mario.webp') center/cover no-repeat;
@@ -46,19 +44,9 @@
       padding: 4rem 1rem;
       color: var(--text-color);
     }
-    header .logo {
-      width: 150px;
-      margin-bottom: 1rem;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      text-shadow: 4px 4px 0 var(--color-red);
-    }
-    header p {
-      font-size: 1.2rem;
-      color: var(--color-yellow);
-      font-weight: 600;
-    }
+    header .logo { width: 150px; margin-bottom: 1rem; }
+    header h1 { font-size: 2.5rem; text-shadow: 4px 4px 0 var(--color-red); }
+    header p { font-size: 1.2rem; color: var(--color-yellow); font-weight: 600; }
     .social-links { margin-top: 2rem; display: flex; justify-content: center; gap: 1rem; }
     .social-link {
       padding: 0.75rem 1.5rem;
@@ -128,8 +116,7 @@
     .tokenomics-table thead th { color: #121212; }
     .tokenomics-table tbody tr:nth-child(even) { background: rgba(0,0,0,0.2); }
 
-    #chart-container { background: #fff; padding: 1.5rem; border-radius: 10px; margin: 1rem 0; }
-
+    #chart-container { background: #ffffff; padding: 1.5rem; border-radius: 10px; margin: 1rem 0; }
     footer {
       text-align: center;
       padding: 2rem;
@@ -163,12 +150,12 @@
       <div class="button-group">
         <a href="https://pancakeswap.finance/swap?outputCurrency=0x5D636a3b495ac15e3C8180cb462e1302fa4D01f1&chain=bnb" class="btn btn-primary" target="_blank" onclick="twq('event','tw-q3v9c-q3v9d');">🚀 Buy Now!</a>
         <a href="https://www.team.finance/view-coin/0x5d636a3b495ac15e3C8180cb462e1302fa4D01f1?name=SuperMarioToken&symbol=SMT&chainid=0x38" class="btn btn-secondary" target="_blank">Staking SMT</a>
-      </div>
+      ></div>
       <div class="contract-address">
         <p>📝 Contract Address:</p>
         <code class="contract-code">0x5D636a3b495ac15e3C8180cb462e1302fa4D01f1</code>
-      </div>
-    </section>
+      ></div>
+    ></section>
 
     <section class="card">
       <h2>Liquidity Growth Strategy Example</h2>
@@ -181,43 +168,41 @@
         <li>Anti-Dump: No team sell-offs or early unlocks</li>
         <li>Full Transparency: All LP injections visible & announced</li>
       </ul>
-    </section>
+    ></section>
 
     <section class="card">
       <h2>Tokenomics</h2>
       <table class="tokenomics-table">
         <thead><tr><th>Allocation</th><th>Amount</th><th>Percentage</th></tr></thead>
         <tbody>
-          <tr><td>Liquidity Pool</td><td>130B(5% Burn)</td><td>65%</td></tr>
+          <tr><td>Liquidity Pool</td><td>130B</td><td>65%</td></tr>
           <tr><td>Staking</td><td>60B</td><td>30%</td></tr>
           <tr><td>Reserve</td><td>10B</td><td>5%</td></tr>
         </tbody>
-      </table>
+      ></table>
       <p style="margin-top:1rem; text-align:left; color:var(--text-color);">
-        <strong>Tax & Mechanics:</strong><br>• NO TAX<br>
-      </p>
-    </section>
+        <strong>Tax & Mechanics:</strong><br>• NO TAX<br>• Max 5% SMT per wallet (removed above $15M MC)
+      ></p>
+    ></section>
 
     <section class="card">
       <h2>Protections</h2>
       <p><strong>No Presale:</strong> Everyone equal start.</p>
-      
+      <p><strong>Wallet Limit:</strong> 5% SMT cap until $15M MC.</p>
       <p><strong>Long-Term Focus:</strong> Built for growth.</p>
-    </section>
+    ></section>
 
     <section class="card">
       <h2>Vision & Roadmap</h2>
       <p><strong>Vision:</strong> Meme-powered community through fun and sustainability.</p>
       <p><strong>Roadmap:</strong> Launch, Community, Airdrops, Staking, CEX listings, Partnerships.</p>
-    </section>
-  </main>
+    ></section>
+  ></main>
 
   <footer>&copy; 2025 Super Mario Token. All rights reserved.</footer>
 
   <script>
-    // Dark theme Chart.js config
-    Chart.defaults.color = '#a0a0a0';
-    Chart.defaults.borderColor = 'rgba(255,255,255,0.4)';
+    // Improve chart readability with darker axis labels and gridlines
     const ctx = document.getElementById('smtChart').getContext('2d');
     new Chart(ctx, {
       type: 'line',
@@ -231,8 +216,15 @@
       options: {
         responsive:true,
         interaction:{mode:'index',intersect:false},
-        plugins:{legend:{position:'top', labels:{color:'#f0f0f0'}}, title:{display:true,text:'SMT Supply & Liquidity Over Time', color:'#f0f0f0', font:{family:'"Poppins", sans-serif', size:16}}},
-        scales:{ y1:{type:'linear',position:'left',title:{display:true,text:'SMT in Pool (B)',color:'#f0f0f0'}}, y2:{type:'linear',position:'right',title:{display:true,text:'Liquidity (USD)',color:'#f0f0f0'}, grid:{drawOnChartArea:false}} }
+        plugins:{
+          legend:{position:'top', labels:{color:'#333'}},
+          title:{display:true, text:'SMT Supply & Liquidity Over Time', color:'#333', font:{family:'"Poppins", sans-serif', size:16}}
+        },
+        scales:{
+          x:{ ticks:{color:'#333'}, grid:{color:'rgba(0,0,0,0.1)'} },
+          y1:{ title:{display:true,text:'SMT in Pool (B)',color:'#333'}, ticks:{color:'#333'}, grid:{color:'rgba(0,0,0,0.1)'} },
+          y2:{ title:{display:true,text:'Liquidity (USD)',color:'#333'}, ticks:{color:'#333'}, grid:{drawOnChartArea:false, color:'rgba(0,0,0,0.1)'} }
+        }
       }
     });
   </script>

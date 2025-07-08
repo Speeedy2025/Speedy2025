@@ -1,444 +1,223 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super Mario Token | The Funnest Meme Token on BNB</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Mario Token | The Funnest Meme Token on BNB</title>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
 
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- Twitter conversion tracking base code -->
-    <script>
-    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
-    },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
-    a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+  <!-- Twitter conversion tracking -->
+  <script>
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
     twq('config','q3v9c');
-    </script>
-    <!-- End Twitter conversion tracking base code -->
+  </script>
 
-    <style>
-        /* --- Variabili e Stili Globali --- */
-        :root {
-            --bg-color: #121212;
-            --card-color: rgba(30, 30, 30, 0.7);
-            --primary-yellow: #FFD700;
-            --primary-red: #e52521;
-            --text-color: #f0f0f0;
-            --text-muted: #a0a0a0;
-            --font-body: 'Poppins', sans-serif;
-            --font-header: 'Press Start 2P', cursive;
-        }
+  <style>
+    /* --- Variables & Global Styles --- */
+    :root {
+      --font-body: 'Poppins', sans-serif;
+      --font-header: 'Press Start 2P', cursive;
+      --color-text: #333;
+      --color-bg: none;
+      --color-card-bg: rgba(30, 30, 30, 0.7);
+      --color-yellow: #FFD700;
+      --color-red: #e52521;
+      --color-muted: #a0a0a0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background: url('mario-frinds.jpg') repeat-x top center;
+      background-size: cover;
+      color: var(--color-text);
+      line-height: 1.6;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    header {
+      font-family: var(--font-header);
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('mario.webp') center/cover no-repeat;
+      text-align: center;
+      padding: 4rem 1rem;
+      color: #fff;
+    }
+    header .logo {
+      width: 150px;
+      margin-bottom: 1rem;
+    }
+    header h1 { font-size: 2.5rem; text-shadow: 4px 4px 0 var(--color-red); }
+    header p { font-size: 1.2rem; color: var(--color-yellow); font-weight: 600; }
+    .social-links { margin-top: 2rem; display: flex; justify-content: center; gap: 1rem; }
+    .social-link {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      color: #fff;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .social-link.telegram { background: #0088cc; }
+    .social-link.twitter { background: #1da1f2; }
+    .social-link:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
 
-        body {
-            font-family: var(--font-body);
-            background-color: var(--bg-color);
-            background-image: url('mario-frinds.jpg'); /* Manteniamo lo sfondo originale ma lo rendiamo più scuro */
-            background-size: cover;
-            background-position: top center;
-            background-attachment: fixed;
-            color: var(--text-color);
-            line-height: 1.7;
-        }
+    main { max-width: 900px; margin: auto; padding: 2rem 1rem; display: flex; flex-direction: column; gap: 2rem; }
+    .card {
+      background: var(--color-card-bg);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+    .card h2 { font-family: var(--font-header); color: var(--color-yellow); font-size: 1.5rem; margin-bottom: 1rem; }
+    .card p, .card ul { color: var(--color-muted); }
+    .button-group { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .btn-primary { background: var(--color-yellow); color: #121212; box-shadow: 0 0 15px rgba(255,215,0,0.3); }
+    .btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255,215,0,0.5); }
+    .btn-secondary { background: var(--color-red); color: #fff; box-shadow: 0 0 15px rgba(229,37,33,0.3); }
+    .btn-secondary:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(229,37,33,0.5); }
 
-        /* --- Header --- */
-        header {
-            text-align: center;
-            padding: 4rem 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('mario.webp') center center/cover no-repeat;
-        }
+    .contract-address { margin-top: 1rem; }
+    .contract-code {
+      display: inline-block;
+      background: rgba(0,0,0,0.5);
+      padding: .75rem 1rem;
+      border: 1px solid var(--color-yellow);
+      border-radius: 6px;
+      font-family: monospace;
+    }
 
-        header .logo {
-            width: 120px;
-            margin-bottom: 1.5rem;
-        }
+    .tokenomics-table {
+      width: 100%; border-collapse: collapse; margin-top: 1rem;
+    }
+    .tokenomics-table th,
+    .tokenomics-table td {
+      padding: 1rem; border: 1px solid rgba(255,255,255,0.2); text-align: left;
+    }
+    .tokenomics-table thead { background: var(--color-yellow); }
+    .tokenomics-table thead th { color: #121212; }
+    .tokenomics-table tbody tr:nth-child(even) { background: rgba(0,0,0,0.2); }
 
-        header h1 {
-            font-family: var(--font-header);
-            font-size: 2.5rem;
-            color: white;
-            text-shadow: 4px 4px 0px var(--primary-red);
-            margin-bottom: 0.5rem;
-        }
+    #chart-container {
+      background: #fff; padding: 1.5rem; border-radius: 10px; margin: 1rem 0;
+    }
 
-        header p {
-            font-size: 1.2rem;
-            color: var(--primary-yellow);
-            font-weight: 600;
-        }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(0,0,0,0.5);
+      color: var(--color-muted);
+      font-size: .9rem;
+    }
 
-        .social-links {
-            margin-top: 2rem;
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-link {
-            color: white;
-            padding: 0.75rem 1.5rem;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 700;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .social-link.telegram { background-color: #0088cc; }
-        .social-link.twitter { background-color: #1da1f2; }
-        .social-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-        }
-
-        /* --- Sezioni e Card --- */
-        main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-            padding: 2rem 1rem;
-        }
-
-        .card {
-            background-color: var(--card-color);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 2.5rem;
-            width: 100%;
-            max-width: 900px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            text-align: center;
-        }
-
-        .card h2 {
-            font-family: var(--font-header);
-            color: var(--primary-yellow);
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .card p, .card ul {
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-
-        /* --- Pulsanti --- */
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 700;
-            margin-top: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-yellow);
-            color: #121212;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-        }
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
-        }
-
-        .btn-secondary {
-            background-color: var(--primary-red);
-            color: white;
-            box-shadow: 0 0 15px rgba(229, 37, 33, 0.3);
-        }
-        .btn-secondary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(229, 37, 33, 0.5);
-        }
-
-        /* --- Elementi Specifici --- */
-        .contract-address {
-            margin-top: 2rem;
-        }
-        .contract-address p {
-            color: var(--text-color);
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        .contract-code {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 0.75rem 1rem;
-            border-radius: 6px;
-            display: inline-block;
-            font-family: monospace;
-            word-break: break-all;
-            border: 1px solid var(--primary-yellow);
-        }
-
-        .button-group {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        ul {
-            text-align: left;
-            padding-left: 20px;
-            list-style-type: '✅  ';
-            line-height: 2;
-        }
-        ul li {
-            padding-left: 10px;
-        }
-
-        /* --- Tabella Tokenomics --- */
-        .tokenomics-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1.5rem;
-        }
-        .tokenomics-table th, .tokenomics-table td {
-            padding: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: left;
-        }
-        .tokenomics-table thead {
-            background-color: var(--primary-yellow);
-        }
-        .tokenomics-table thead th {
-            color: #121212;
-            font-weight: 700;
-        }
-        .tokenomics-table tbody tr:nth-child(even) {
-            background-color: rgba(0, 0, 0, 0.2);
-        }
-
-        /* --- Grafico --- */
-        #chart-container {
-            background-color: #fff;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin: 2rem 0;
-        }
-
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
-            background-color: rgba(0, 0, 0, 0.5);
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        /* --- Media Queries per la Responsività --- */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
-            .card {
-                padding: 1.5rem;
-            }
-        }
-    </style>
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      .btn { padding: .8rem 1.5rem; font-size: 1rem; }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <img src="Super-Mario.png" alt="SMT Logo" class="logo">
+    <h1>Super Mario</h1>
+    <p>The Funist Meme Token on BNB</p>
+    <div class="social-links">
+      <a href="https://t.me/supermariotoken2025" target="_blank" class="social-link telegram">Telegram</a>
+      <a href="https://x.com/super_mari26524" target="_blank" class="social-link twitter">Twitter</a>
+    </div>
+  </header>
 
-    <header>
-        <img src="Super-Mario.png" alt="SMT Logo" class="logo">
-        <h1>Super Mario</h1>
-        <p>The Funist Meme Token on BNB</p>
-        <div class="social-links">
-            <a href="https://t.me/supermariotoken2025" target="_blank" class="social-link telegram">Telegram</a>
-            <a href="https://x.com/super_mari26524" target="_blank" class="social-link twitter">Twitter</a>
-        </div>
-    </header>
+  <main>
+    <section class="card">
+      <h2>Join the Race!</n      <p>Super Mario Token (SMT) is here to bring energy and fun into crypto. Fair launch, no presale, pure speed!</p>
+      <div class="button-group">
+        <a href="https://pancakeswap.finance/swap?outputCurrency=0x5D636a3b495ac15e3C8180cb462e1302fa4D01f1&chain=bnb" class="btn btn-primary" target="_blank" onclick="twq('event','tw-q3v9c-q3v9d');">🚀 Buy Now!</a>
+        <a href="https://www.team.finance/view-coin/0x5d636a3b495ac15e3C8180cb462e1302fa4D01f1?name=SuperMarioToken&symbol=SMT&chainid=0x38" class="btn btn-secondary" target="_blank">Staking SMT</a>
+      </div>
+      <div class="contract-address">
+        <p>📝 Contract Address:</p>
+        <code class="contract-code">0x5D636a3b495ac15e3C8180cb462e1302fa4D01f1</code>
+      </div>
+    </section>
 
-    <main>
-        <section class="card">
-            <h2>Join the Race!</h2>
-            <p>Super Mario Token (SMT) is here to bring energy and fun into crypto. Fair launch, no presale, pure speed!</p>
-            <div class="button-group">
-                <a href="https://pancakeswap.finance/swap?outputCurrency=0x5D636a3b495ac15e3C8180cb462e1302fa4D01f1&chain=bnb" class="btn btn-primary" target="_blank" onclick="twq('event', 'tw-q3v9c-q3v9d');">
-                   🚀 Buy Now...!
-                </a>
-                <a href="https://www.team.finance/view-coin/0x5d636a3b495ac15e3c8180cb462e1302fa4d01f1?name=SuperMarioToken&symbol=SMT&chainid=0x38&_gl=1*15w3iu0*_gcl_au*NDI0NTY2MDgwLjE3NDYzODAzMTU." class="btn btn-secondary" target="_blank">Staking SMT</a>
-            </div>
-            <div class="contract-address">
-                <p>📝 Contract Address:</p>
-                <code class="contract-code">0x5D636a3b495ac15e3C8180cb462e1302fa4D01f1</code>
-            </div>
-        </section>
+    <section class="card">
+      <h2>Liquidity Growth Strategy Example</h2>
+      <p>Super Mario Token starts with a fair launch: <strong>5B SMT</strong> in liquidity for rapid momentum.</p>
+      <div id="chart-container"><canvas id="smtChart"></canvas></div>
+      <p>Phased releases of SMT reinvest revenue to grow liquidity pool.</p>
+      <ul>
+        <li>Fair Launch: Only 5B SMT in the initial pool</li>
+        <li>Self-funded Expansion: More liquidity after each milestone</li>
+        <li>Anti-Dump: No team sell-offs or early unlocks</li>
+        <li>Full Transparency: All LP injections visible & announced</li>
+      </ul>
+    </section>
 
-        <section class="card">
-            <h2>Liquidity Growth Strategy Example</h2>
-            <p>Super Mario Token starts with a fair and focused launch: <strong>5B SMT</strong> in liquidity. This allows a higher starting price and rapid momentum during the early stages.</p>
-            <div id="chart-container">
-              <canvas id="smtChart"></canvas>
-            </div>
-            <p>Instead of releasing all tokens at once, we follow a smart phased approach: <strong>small portions of SMT will be sold at higher prices</strong> (e.g., 500M–1B), and the revenue is used to add <strong>another 5B SMT + BNB</strong> back into the liquidity pool.</p>
-            <p>This cycle repeats step-by-step until the full liquidity goal is achieved – creating steady growth, price stability, and community trust.</p>
-            <ul>
-                <li><strong>Fair Launch:</strong> Only 5B SMT in the initial pool</li>
-                <li><strong>Self-funded Expansion:</strong> More liquidity after each milestone</li>
-                <li><strong>Anti-Dump:</strong> No team sell-offs or early unlocks</li>
-                <li><strong>Full Transparency:</strong> All LP injections will be visible & announced</li>
-            </ul>
-            <p style="margin-top: 1rem; color: var(--text-color); font-weight: 600;">With this dynamic model, Mario grows fast, fair, and under full control.</p>
-        </section>
+    <section class="card">
+      <h2>Tokenomics</h2>
+      <table class="tokenomics-table">
+        <thead><tr><th>Allocation</th><th>Amount</th><th>Percentage</th></tr></thead>
+        <tbody>
+          <tr><td>Liquidity Pool</td><td>130B</td><td>65%</td></tr>
+          <tr><td>Staking</td><td>60B</td><td>30%</td></tr>
+          <tr><td>Reserve</td><td>10B</td><td>5%</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:1rem; text-align:left; color:var(--color-text);">
+        <strong>Tax & Mechanics:</strong><br>• NO TAX<br>• Max 5% SMT per wallet (removed above $15M MC)
+      </p>
+    </section>
 
-        <section class="card">
-            <h2>Tokenomics</h2>
-            <table class="tokenomics-table">
-                <thead>
-                    <tr>
-                        <th>Allocation</th>
-                        <th>Amount (SMT)</th>
-                        <th>Percentage</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>💧 Liquidity Pool</td>
-                        <td>130,000,000,000</td>
-                        <td>65%</td>
-                    </tr>
-                    <tr>
-                        <td>🧱 Staking (Team Finance)</td>
-                        <td>60,000,000,000</td>
-                        <td>30%</td>
-                    </tr>
-                    <tr>
-                        <td>🎁 Reserve (Airdrops, Marketing, Burn)</td>
-                        <td>10,000,000,000</td>
-                        <td>5%</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p style="margin-top: 2rem; text-align: left;">
-                <strong>Tax & Mechanics:</strong><br>
-                • NO TAX<br>
-                • Wallet limit: Max 5% SMT per wallet (limit removed above $15M MC)
-            </p>
-        </section>
+    <section class="card">
+      <h2>Protections</h2>
+      <p><strong>No Presale:</strong> Everyone equal start.</p>
+      <p><strong>Wallet Limit:</strong> 5% SMT cap until $15M MC.</p>
+      <p><strong>Long-Term Focus:</strong> Built for growth.</p>
+    </section>
 
-        <section class="card">
-             <h2>Why Super Mario Uses These Protections</h2>
-             <p>
-                 <strong>⏳ Holding Period:</strong><br>
-                 Mario has a protection against bots which are filtered out with a minimum purchase and sale as well as a max. per wallet of 5% SMT which is only free to buy more at a market cap of 15M. There is no tax.
-             </p>
-             <p>Super Mario Token (SMT) is more than just a meme – it’s built for long-term growth and community trust. To prevent bots, unfair launches, and pump-and-dump behavior, several smart mechanisms were added:</p>
-             <ul>
-                 <li><strong>No Presale:</strong> Everyone starts equally. No backdoors. No unfair advantages.</li>
-                 <li><strong>Wallet Limit:</strong> Max 5% SMT per wallet (until $15M MC is reached) – stopping whales from dumping early.</li>
-                 <li><strong>Long-Term Focus:</strong> Mario is built to last. These protections ensure fair play, safety, and serious potential.</li>
-             </ul>
-             <p style="margin-top: 1rem; color: var(--text-color); font-weight: 600;">These protections are not restrictions – they are your shield. Built for fairness. Designed for Mario.</p>
-        </section>
-        
-        <section class="card">
-             <h2>Vision & Roadmap</h2>
-             <p>
-                <strong>Vision:</strong><br>
-                Mario Token is a meme-powered movement designed to build a strong community through fun, speed, and sustainable tokenomics. With no presale and a clear roadmap, SMT aims to attract both meme lovers and serious holders.
-            </p>
-            <p>
-                <strong>Roadmap:</strong><br>
-                • Launch and Liquidity<br>
-                • Community Building<br>
-                • Airdrops and Listings<br>
-                • Staking Integration<br>
-                • CEX Applications (LBank, Gate.io, etc.)<br>
-                • Long-Term Meme Partnerships
-            </p>
-        </section>
-    </main>
+    <section class="card">
+      <h2>Vision & Roadmap</h2>
+      <p><strong>Vision:</strong> Meme-powered community through fun and sustainability.</p>
+      <p><strong>Roadmap:</strong> Launch, Community, Airdrops, Staking, CEX listings, Partnerships.</p>
+    </section>
+  </main>
 
-    <footer>
-        <p>© 2025 Super Mario Token. All rights reserved.</p>
-    </footer>
+  <footer>&copy; 2025 Super Mario Token. All rights reserved.</footer>
 
-    <script>
-      // Riconfiguriamo il grafico per il tema scuro
-      const ctx = document.getElementById('smtChart').getContext('2d');
-      Chart.defaults.color = '#a0a0a0'; // Colore testo default per il grafico
-      Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.1)'; // Colore griglia
-
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['Phase 1','Phase 2','Phase 3','Phase 4','Phase 5','Phase 6','Phase 7','Phase 8','Phase 9','Phase 10','Phase 11','Phase 12'],
-          datasets: [
-            {
-              label: 'SMT in Pool (B)',
-              data: [10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65],
-              borderColor: '#e52521',
-              backgroundColor: 'rgba(229, 37, 33, 0.2)',
-              yAxisID: 'y1',
-              tension: 0.3
-            },
-            {
-              label: 'Liquidity (USD)',
-              data: [2500, 4000, 7200, 13700, 26800, 33000, 39000, 46000, 52000, 58000, 63000, 72000],
-              borderColor: '#1976d2',
-              backgroundColor: 'rgba(25,118,210,0.2)',
-              yAxisID: 'y2',
-              tension: 0.3
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          interaction: { mode: 'index', intersect: false },
-          plugins: {
-            legend: {
-              position: 'top',
-              labels: { color: '#f0f0f0' }
-            },
-            title: {
-              display: true,
-              text: 'SMT Supply and Liquidity Growth Over Time',
-              color: '#f0f0f0',
-              font: { size: 16, family: "'Poppins', sans-serif" }
-            }
-          },
-          scales: {
-            y1: {
-              type: 'linear',
-              position: 'left',
-              title: {
-                display: true,
-                text: 'SMT in Pool (B)',
-                color: '#f0f0f0'
-              }
-            },
-            y2: {
-              type: 'linear',
-              position: 'right',
-              title: {
-                display: true,
-                text: 'Liquidity (USD)',
-                color: '#f0f0f0'
-              },
-              grid: { drawOnChartArea: false }
-            }
-          }
-        }
-      });
-    </script>
+  <script>
+    // Dark theme Chart.js config
+    Chart.defaults.color = '#a0a0a0';
+    Chart.defaults.borderColor = 'rgba(255,255,255,0.1)';
+    const ctx = document.getElementById('smtChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Phase 1','Phase 2','Phase 3','Phase 4','Phase 5','Phase 6','Phase 7','Phase 8','Phase 9','Phase 10','Phase 11','Phase 12'],
+        datasets: [
+          { label:'SMT in Pool (B)', data:[10,15,20,25,30,35,40,45,50,55,60,65], borderColor:'var(--color-red)', backgroundColor:'rgba(229,37,33,0.2)', yAxisID:'y1', tension:0.3 },
+          { label:'Liquidity (USD)', data:[2500,4000,7200,13700,26800,33000,39000,46000,52000,58000,63000,72000], borderColor:'#1976d2', backgroundColor:'rgba(25,118,210,0.2)', yAxisID:'y2', tension:0.3 }
+        ]
+      },
+      options: {
+        responsive:true,
+        interaction:{mode:'index',intersect:false},
+        plugins:{legend:{position:'top', labels:{color:'#f0f0f0'}}, title:{display:true,text:'SMT Supply & Liquidity Over Time', color:'#f0f0f0', font:{family:'"Poppins", sans-serif', size:16}}},
+        scales:{ y1:{type:'linear',position:'left',title:{display:true,text:'SMT in Pool (B)',color:'#f0f0f0'}}, y2:{type:'linear',position:'right',title:{display:true,text:'Liquidity (USD)',color:'#f0f0f0'}, grid:{drawOnChartArea:false}} }
+      }
+    });
+  </script>
 </body>
 </html>
+
